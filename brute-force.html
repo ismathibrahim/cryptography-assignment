@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Brute Force</title>
+
+    <link href="bootstrap.min.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <nav
+          id="sidebarMenu"
+          class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+        >
+          <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html"> Dashboard </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="credit-card.html">
+                  Credit Card Validation
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="hamming-code.html">
+                  Hamming Code Corrector
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="brute-force.html">
+                  Brute Force
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="stream-cipher.html">
+                  Stream Cipher
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <h1 class="h2 mt-5">Brute Force</h1>
+          <div class="row">
+            <div class="col-6 p-3">
+              <div class="card p-3"><h4 class="mb-3">Brute Force</h3>
+                Select file and click button to try dictionary attack
+
+                <p class="py-5" id="bruteStatus"></p>
+              <button class="btn btn-primary" id="bruteForceButton" >Brute Force</button>
+              </div>
+            </div>
+            <div class="col-6 p-3">
+              <div class="card p-3"><h4 class="mb-3">Dictionary Attack</h4>
+                <p>Select file and click button to try dictionary attack</p>
+                <input type="file" id="file" />
+                <p class="py-5" id="dictionaryStatus"></p>
+
+                <button class="btn btn-primary mt-3" id="dictionaryButton" >Dictionary Attack</button>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    
+    <script src="./brute-force.js"></script>
+  </body>
+</html>

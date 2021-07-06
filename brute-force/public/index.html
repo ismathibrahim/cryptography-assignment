@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brute Force Password Cracker</title>
+  </head>
+  <body>
+    <h1>Brute Force password cracker</h1>
+    <br />
+    <p class="status-text"></p>
+    ----------------------------------------------
+    <p>Click button to try all combinations</p>
+    <button class="log-button" onclick="crackPassword()">
+      All Combinations
+    </button>
+    <br /><br /><br /><br />
+    <p>Select file and click button to try dictionary attack</p>
+
+    <input type="file" onchange="loadFile(this)" />
+
+    <button class="log-button" onclick="dictionaryAttack()">
+      Dictionary Attack
+    </button>
+
+    <script src="/password-generator.js"></script>
+    <script src="/main.js"></script>
+  </body>
+</html>

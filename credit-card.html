@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Credit Card Validation</title>
+
+    <link href="bootstrap.min.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <nav
+          id="sidebarMenu"
+          class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+        >
+          <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html"> Dashboard </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="credit-card.html">
+                  Credit Card Validation
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="hamming-code.html">
+                  Hamming Code Corrector
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="brute-force.html"> Brute Force </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="stream-cipher.html">
+                  Stream Cipher
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <h1 class="h2 mt-5">Credit Card Validation</h1>
+          <div class="row">
+            <div class="col-6 p-3">
+              <div class="card p-3">
+                <form>
+                  <label for="bitstring" class="form-label">Card Number</label>
+                  <input
+                    type="text"
+                    id="userNum"
+                    class="form-control mb-3"
+                    required
+                    value=""
+                    placeholder="please enter your credit card number"
+                  />
+                  <p>Only Accept 16 Digit Visa and Master Card</p>
+                  <button id="submit" class="btn btn-primary">Check</button>
+                </form>
+                <p class="mt-4" id="result"></p>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="./credit-card.js"></script>
+  </body>
+</html>
