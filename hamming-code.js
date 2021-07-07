@@ -29,9 +29,9 @@ const checkError = () => {
   const D6 = arr[1];
   const D7 = arr[0];
 
-  const P1String = P4 + D3 + D5 + D7;
+  const P1String = P1 + D3 + D5 + D7;
   const P2String = P2 + D3 + D6 + D7;
-  const P4String = P1 + D5 + D6 + D7;
+  const P4String = P4 + D5 + D6 + D7;
 
   const finalString =
     getParity(P4String) + getParity(P2String) + getParity(P1String);
