@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Brute Force</title>
+
+    <link href="../main.css" rel="stylesheet" />
+    <link href="./brute-force.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header><h1>Cryptography Toolkit</h1></header>
+    <div class="main-container">
+      <nav class="sidebar">
+        <div class="nav-links">
+          <img src="../logo.png" alt="Logo" class="logo" />
+          <a class="nav-link" href="../index.html"> Dashboard </a>
+
+          <a class="nav-link" href="../card-validator/card-validator.html">
+            Credit Card Validation
+          </a>
+
+          <a class="nav-link" href="../hamming-code/hamming-code.html">
+            Hamming Code Corrector
+          </a>
+
+          <a class="nav-link active" href="brute-force.html"> Brute Force </a>
+
+          <a class="nav-link" href="../stream-cipher/stream-cipher.html">
+            Stream Cipher
+          </a>
+        </div>
+      </nav>
+
+      <main>
+        <h2>Brute Force</h2>
+
+        <div class="wrapper">
+          <div class="card">
+            <h3>Brute Force</h3>
+            Click button to try all combinations
+
+            <p id="bruteStatus"></p>
+            <button class="btn btn-primary" id="bruteForceButton">
+              Brute Force
+            </button>
+          </div>
+
+          <div class="card">
+            <h3>Dictionary Attack</h3>
+            <p>Select file and click button to try dictionary attack</p>
+            <input type="file" id="file" />
+            <p id="dictionaryStatus"></p>
+
+            <button id="dictionaryButton">Dictionary Attack</button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <footer>Copyright &copy; 2021 Ismath Ibrahim</footer>
+
+    <script src="./brute-force.js"></script>
+  </body>
+</html>

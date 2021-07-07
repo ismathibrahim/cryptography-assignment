@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Hamming Code Corrector</title>
+
+    <link href="../main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header><h1>Cryptography Toolkit</h1></header>
+    <div class="main-container">
+      <nav class="sidebar">
+        <div class="nav-links">
+          <img src="../logo.png" alt="Logo" class="logo" />
+          <a class="nav-link" href="../index.html"> Dashboard </a>
+
+          <a class="nav-link" href="../card-validator/card-validator.html">
+            Credit Card Validation
+          </a>
+
+          <a class="nav-link active" href="hamming-code.html">
+            Hamming Code Corrector
+          </a>
+
+          <a class="nav-link" href="../brute-force/brute-force.html">
+            Brute Force
+          </a>
+
+          <a class="nav-link" href="../stream-cipher/stream-cipher.html">
+            Stream Cipher
+          </a>
+        </div>
+      </nav>
+
+      <main>
+        <h2>Hamming Code Corrector</h2>
+
+        <div class="card">
+          <form>
+            <label for="bitstring">Bitstring</label>
+            <input type="text" id="bitstring" required />
+            <button id="submit">Submit</button>
+          </form>
+          <p>Error position:</p>
+          <h4 id="result"></h4>
+        </div>
+      </main>
+    </div>
+    <footer>Copyright &copy; 2021 Ismath Ibrahim</footer>
+
+    <script src="hamming-code.js"></script>
+  </body>
+</html>

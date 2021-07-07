@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Credit Card Validation</title>
+
+    <link href="../main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header><h1>Cryptography Toolkit</h1></header>
+    <div class="main-container">
+      <nav class="sidebar">
+        <div class="nav-links">
+          <img src="../logo.png" alt="Logo" class="logo" />
+          <a class="nav-link" href="../index.html"> Dashboard </a>
+
+          <a class="nav-link active" href="card-validator.html">
+            Credit Card Validation
+          </a>
+
+          <a class="nav-link" href="../hamming-code/hamming-code.html">
+            Hamming Code Corrector
+          </a>
+
+          <a class="nav-link" href="../brute-force/brute-force.html">
+            Brute Force
+          </a>
+
+          <a class="nav-link" href="../stream-cipher/stream-cipher.html">
+            Stream Cipher
+          </a>
+        </div>
+      </nav>
+
+      <main>
+        <h2>Credit Card Validator</h2>
+
+        <div class="card">
+          <form>
+            <p>Card Number</p>
+            <input
+              type="text"
+              id="userNum"
+              required
+              placeholder="XXXXXXXXXXXXXXXX"
+            />
+            <p>Only Accept 16 Digit Visa and Master Card</p>
+            <button id="submit">Check</button>
+          </form>
+          <p id="result"></p>
+        </div>
+      </main>
+    </div>
+    <footer>Copyright &copy; 2021 Ismath Ibrahim</footer>
+
+    <script src="./card-validator.js"></script>
+  </body>
+</html>
