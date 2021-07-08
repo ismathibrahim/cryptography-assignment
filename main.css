@@ -135,8 +135,18 @@ footer {
 }
 
 input[type="text"] {
-  border: 1px solid #26ffdf;
+  border: 1px solid white;
   padding: 10px;
   background-color: transparent;
   color: white;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+.mb-30 {
+  margin-bottom: 30px;
+}
+.mb-40 {
+  margin-bottom: 40px;
 }

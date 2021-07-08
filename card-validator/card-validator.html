@@ -7,6 +7,7 @@
     <title>Credit Card Validation</title>
 
     <link href="../main.css" rel="stylesheet" />
+    <link href="./card-validator.css" rel="stylesheet" />
   </head>
   <body>
     <header><h1>Cryptography Toolkit</h1></header>
@@ -38,18 +39,20 @@
         <h2>Credit Card Validator</h2>
 
         <div class="card">
-          <form>
-            <p>Card Number</p>
+          <form onsubmit="event.preventDefault(); validate();">
+            <p class="mb-40">
+              Enter a 16-digit credit card number to check validity
+            </p>
             <input
               type="text"
-              id="userNum"
+              class="numberInput"
               required
               placeholder="XXXXXXXXXXXXXXXX"
             />
-            <p>Only Accept 16 Digit Visa and Master Card</p>
-            <button id="submit">Check</button>
+            <button type="submit" id="submit">Check</button>
           </form>
-          <p id="result"></p>
+          <p class="errorText"></p>
+          <p class="validityText"></p>
         </div>
       </main>
     </div>

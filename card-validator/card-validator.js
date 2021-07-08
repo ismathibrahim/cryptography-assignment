@@ -1,74 +1,88 @@
-const userNumInput = document.getElementById("userNum");
+const numberInput = document.querySelector(".numberInput");
+const errorText = document.querySelector(".errorText");
+const validityText = document.querySelector(".validityText");
 
-const getUserInput = () => userNumInput.value;
+const validate = () => {
+  const number = numberInput.value.trim(); // Number entered by user
+  const numberArray = number.split(""); // Number converted into an array to process
 
-const luhnCheck = () => {
-  let ccNum = getUserInput().trim();
-  let ccNumSplit = ccNum.split("");
-  let sum = 0;
-  let singleNums = [];
-  let doubleNums = [];
-  let finalArry = undefined;
-  let validCard = false;
+  const newArray = []; // New array to store the processed digits
 
-  if (!/\d{15,16}(~\W[a-zA-Z])*$/g.test(ccNum) || ccNum.length > 16) {
-    return false;
+  errorText.textContent = "";
+  validityText.textContent = "";
+
+  // If the user input contains characters other than numbers, show error
+  if (!/^[0-9]+$/.test(number)) {
+    errorText.textContent = "Please enter only numbers";
+    return;
   }
 
-  if (ccNum.length === 16) {
-    for (let i = ccNumSplit.length - 1; i >= 0; i--) {
-      if (i % 2 !== 0) {
-        singleNums.push(ccNumSplit[i]);
+  // If the user input is not of 16 digits long, show error
+  if (number.length !== 16) {
+    errorText.textContent = "Number length should be 16";
+    return;
+  }
+
+  // Starting from the rightmost digit, double every second number and add to new array.
+  // Every first number is added to new array as it is.
+  if (number.length === 16) {
+    for (let i = numberArray.length - 1; i >= 0; i--) {
+      if (i % 2 == 0) {
+        newArray.push(double(numberArray[i]));
       } else {
-        doubleNums.push((ccNumSplit[i] * 2).toString());
+        newArray.push(numberArray[i]);
       }
     }
   }
 
-  doubleNums = doubleNums.join("").split("");
-  finalArry = doubleNums.concat(singleNums);
+  // Find the sum of the numbers in new array
+  const total = newArray.reduce((acc, digit) => {
+    return acc + Number(digit);
+  }, 0);
 
-  for (let j = 0; j < finalArry.length; j++) {
-    sum += parseInt(finalArry[j]);
+  // Check is the sum modulo 10 is equal to 0
+  if (total % 10 === 0) {
+    validityText.textContent = "Valid card number";
+    return;
   }
 
-  if (sum % 10 === 0) {
-    validCard = true;
-  }
-
-  console.log(sum);
-  return validCard;
+  validityText.textContent = "Invalid card number";
 };
 
-const whatCard = () => {
-  let ccNum = getUserInput();
-  let validCheck = luhnCheck();
-  let cardName = "Unknown card Number";
+/**
+ * Helper function to double a number. If the doubled number has two digits,
+ * then return sum of the two digits.
+ * @param {number} number
+ * @returns a number
+ */
+const double = (number) => {
+  const doubledNumber = (number * 2).toString();
 
-  let ccObj = {
-    "valid (visa card)": /^(?:4[0-9]{12}(?:[0-9]{3})?)$/g,
-    "valid (master card)": /^5[1-5][0-9]{14}$/g,
-    "valid (Amex card)": /3[47][0-9]{13}$/g,
-  };
-
-  if (luhnCheck() === false) {
-    cardName = "Invalid input!!!";
-    return cardName;
+  if (doubledNumber.length > 1) {
+    return Number(doubledNumber[0]) + Number(doubledNumber[1]);
   }
-  Object.keys(ccObj).forEach((prop) => {
-    if (ccObj[prop].test(ccNum)) {
-      cardName = prop;
-    }
-  });
-  return cardName;
+
+  return doubledNumber;
 };
 
-const check = document.getElementById("submit");
-check.addEventListener(
-  "click",
-  function (e) {
-    e.preventDefault();
-    document.getElementById("result").innerHTML = whatCard();
-  },
-  false
-);
+// const issuers = {
+//   Visa: /^(?:4[0-9]{12}(?:[0-9]{3})?)$/g,
+//   MasterCard: /^5[1-5][0-9]{14}$/g,
+//   Amex: /3[47][0-9]{13}$/g,
+// };
+
+// const whatCard = () => {
+//   let ccNum = getUserInput();
+//   let cardName = "Unknown card Number";
+
+//   if (luhnCheck() === false) {
+//     cardName = "Invalid input!!!";
+//     return cardName;
+//   }
+//   Object.keys(issuers).forEach((prop) => {
+//     if (issuers[prop].test(ccNum)) {
+//       cardName = prop;
+//     }
+//   });
+//   return cardName;
+// };
