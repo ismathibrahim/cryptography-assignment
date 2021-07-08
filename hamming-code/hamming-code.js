@@ -30,7 +30,8 @@ const checkAndCorrect = () => {
   }
 
   errorPositionText.textContent = "Error position: " + errorPosition;
-  // correctCodeText.textContent = "Correct code: " + errorPosition;
+  correctCodeText.textContent =
+    "Correct code: " + flipBit(binaryString, errorPosition);
 };
 
 /**
@@ -82,4 +83,21 @@ const getParity = (string) => {
  */
 const evenOrOdd = (number) => {
   return number % 2 == 0 ? "even" : "odd";
+};
+
+/**
+ * Flips a binary bit of a string at a given position
+ * @param {string} binaryString
+ * @param {number} bitPosition
+ * @returns corrected binary string
+ */
+const flipBit = (binaryString, bitPosition) => {
+  const arr = binaryString.split("");
+  const incorrectBit = arr[7 - bitPosition];
+
+  const correctBit = Number(incorrectBit) === 1 ? 0 : 1;
+
+  arr[7 - bitPosition] = correctBit;
+
+  return arr.join("");
 };
