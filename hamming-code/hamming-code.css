@@ -1,0 +1,8 @@
+.card {
+  height: 400px;
+  width: 380px;
+}
+
+.inputErrorText {
+  color: rgb(255, 78, 160);
+}

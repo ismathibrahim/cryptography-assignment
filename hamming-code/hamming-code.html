@@ -7,6 +7,7 @@
     <title>Hamming Code Corrector</title>
 
     <link href="../main.css" rel="stylesheet" />
+    <link href="./hamming-code.css" rel="stylesheet" />
   </head>
   <body>
     <header><h1>Cryptography Toolkit</h1></header>
@@ -38,13 +39,14 @@
         <h2>Hamming Code Corrector</h2>
 
         <div class="card">
-          <form>
-            <label for="bitstring">Bitstring</label>
-            <input type="text" id="bitstring" required />
-            <button id="submit">Submit</button>
+          <form onsubmit="event.preventDefault(); checkAndCorrect();">
+            <p>Binary string</p>
+            <input type="text" class="binaryStringInput" required />
+            <button type="submit">Check</button>
           </form>
-          <p>Error position:</p>
-          <h4 id="result"></h4>
+          <p class="inputErrorText mb-40"></p>
+          <p class="errorPositionText"></p>
+          <p class="correctCodeText"></p>
         </div>
       </main>
     </div>
