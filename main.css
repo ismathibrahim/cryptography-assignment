@@ -132,13 +132,25 @@ footer {
     0 0 1em rgba(0, 170, 170, 0.5);
   border: #26ffdf solid 1px;
   background-color: #03111e;
+  transition: all 0.3s;
 }
 
-input[type="text"] {
+input[type="text"],
+textarea {
   border: 1px solid white;
   padding: 10px;
   background-color: transparent;
   color: white;
+}
+
+input[type="text"],
+textarea:focus {
+  outline: none;
+}
+
+textarea {
+  resize: none;
+  width: 100%;
 }
 
 .mb-20 {
