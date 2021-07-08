@@ -1,26 +1,13 @@
-const dictionaryStatus = document.getElementById("dictionaryStatus");
-const bruteStatus = document.getElementById("bruteStatus");
-
-const dictionaryButton = document.getElementById("dictionaryButton");
-const bruteForceButton = document.getElementById("bruteForceButton");
-
-//Event handlers for buttons----------------------
-dictionaryButton.addEventListener(
-  "click",
-  function (e) {
-    dictionaryAttack();
-  },
-  false
+const dictionaryStatus = document.querySelector(".dictionaryStatus");
+const bruteForceStatus = document.querySelector(".bruteForceStatus");
+const bruteForceStartedText = document.querySelector(".bruteForceStartedText");
+const dictionaryStartedText = document.querySelector(".dictionaryStartedText");
+const bruteForceFoundText = document.querySelector(".bruteForceFoundText");
+const dictionaryFoundText = document.querySelector(".dictionaryFoundText");
+const bruteDurationText = document.querySelector(".bruteDurationText");
+const dictionaryDurationText = document.querySelector(
+  ".dictionaryDurationText"
 );
-
-bruteForceButton.addEventListener(
-  "click",
-  function (e) {
-    bruteForce();
-  },
-  false
-);
-//------------------------------------------------------
 
 ///Brute force ---start----------------------------------
 const pattern = "abcdefghijklmnopqrstuvwxyz1234567890";
@@ -28,21 +15,30 @@ const pattern = "abcdefghijklmnopqrstuvwxyz1234567890";
 const charArray = pattern.split("");
 
 const bruteForce = async () => {
+  const startTime = new Date();
   const gen = generate(charArray, 3);
 
   let found = false;
   let currentItem;
 
+  bruteForceStartedText.textContent = "Brute force attack started...";
+  bruteForceStatus.textContent = "";
+  bruteForceFoundText.textContent = "";
+  bruteDurationText.textContent = "";
+
   while (!found) {
     currentItem = gen.next();
 
-    bruteStatus.textContent = "current candidate: " + currentItem.value;
+    bruteForceStatus.textContent = "Current candidate: " + currentItem.value;
     const response = await postData("http://localhost:3000/login", {
       password: currentItem.value,
     });
 
     if (response == "Correct Password") {
-      bruteStatus.textContent = "Password found: " + currentItem.value;
+      bruteForceFoundText.textContent = "Password found: " + currentItem.value;
+      bruteDurationText.textContent =
+        "Time elapsed: " + getElapsedTime(startTime);
+
       break;
     }
     if (currentItem.done == true) break;
@@ -87,19 +83,27 @@ document.getElementById("file").onchange = function () {
 const dictionaryAttack = () => {
   const reader = new FileReader();
 
+  const startTime = new Date();
+  dictionaryStartedText.textContent = "Brute force attack started...";
+  dictionaryStatus.textContent = "";
+  dictionaryFoundText.textContent = "";
+  dictionaryDurationText.textContent = "";
+
   reader.onload = async (event) => {
     const file = event.target.result;
     const allLines = file.split(/\r\n|\n/);
 
     for (let i = 0; i < allLines.length; i++) {
       const line = allLines[i];
-      dictionaryStatus.innerHTML = "current candidate: " + line;
+      dictionaryStatus.innerHTML = "Current candidate: " + line;
       const response = await postData("http://localhost:3000/login", {
         password: line,
       });
 
       if (response == "Correct Password") {
-        dictionaryStatus.innerHTML = "Password found: " + line;
+        dictionaryFoundText.textContent = "Password found: " + line;
+        dictionaryDurationText.textContent =
+          "Elapsed time: " + getElapsedTime(startTime);
         break;
       }
     }
@@ -125,3 +129,14 @@ async function postData(url = "", data = {}) {
   });
   return response.json();
 }
+
+const getElapsedTime = (startTime) => {
+  endTime = new Date();
+  var timeDiff = endTime - startTime; //in ms
+  // strip the ms
+  timeDiff /= 1000;
+
+  // get seconds
+  var seconds = Math.round(timeDiff);
+  return seconds + " seconds";
+};

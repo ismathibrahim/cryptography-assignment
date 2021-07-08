@@ -38,22 +38,31 @@
 
         <div class="wrapper">
           <div class="card">
-            <h3>Brute Force</h3>
-            Click button to try all combinations
+            <h3 class="mb-30">Brute Force Attack</h3>
+            <p class="mb-30">Click button to try all combinations.</p>
 
-            <p id="bruteStatus"></p>
-            <button class="btn btn-primary" id="bruteForceButton">
-              Brute Force
-            </button>
+            <button class="mb-30" onclick="bruteForce()">Brute Force</button>
+            <p class="bruteForceStartedText"></p>
+            <p class="bruteForceStatus"></p>
+            <p class="bruteForceFoundText"></p>
+            <p class="bruteDurationText"></p>
           </div>
 
           <div class="card">
-            <h3>Dictionary Attack</h3>
-            <p>Select file and click button to try dictionary attack</p>
+            <h3 class="mb-30">Dictionary Attack</h3>
+            <p class="mb-30">
+              Select dictionary file and click button to try dictionary attack.
+              Dictionary file must be a text file.
+            </p>
             <input type="file" id="file" />
-            <p id="dictionaryStatus"></p>
 
-            <button id="dictionaryButton">Dictionary Attack</button>
+            <button class="mb-30" onclick="dictionaryAttack()">
+              Dictionary Attack
+            </button>
+            <p class="dictionaryStartedText"></p>
+            <p class="dictionaryStatus"></p>
+            <p class="dictionaryFoundText"></p>
+            <p class="dictionaryDurationText"></p>
           </div>
         </div>
       </main>
