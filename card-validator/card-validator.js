@@ -1,6 +1,7 @@
 const numberInput = document.querySelector(".numberInput");
 const errorText = document.querySelector(".errorText");
 const validityText = document.querySelector(".validityText");
+const issuerText = document.querySelector(".issuerText");
 
 const validate = () => {
   const number = numberInput.value.trim(); // Number entered by user
@@ -10,6 +11,7 @@ const validate = () => {
 
   errorText.textContent = "";
   validityText.textContent = "";
+  issuerText.textContent = "";
 
   // If the user input contains characters other than numbers, show error
   if (!/^[0-9]+$/.test(number)) {
@@ -43,6 +45,7 @@ const validate = () => {
   // Check is the sum modulo 10 is equal to 0
   if (total % 10 === 0) {
     validityText.textContent = "Valid card number";
+    issuerText.textContent = "Issuer: " + getIssuer(number);
     return;
   }
 
@@ -65,24 +68,24 @@ const double = (number) => {
   return doubledNumber;
 };
 
-// const issuers = {
-//   Visa: /^(?:4[0-9]{12}(?:[0-9]{3})?)$/g,
-//   MasterCard: /^5[1-5][0-9]{14}$/g,
-//   Amex: /3[47][0-9]{13}$/g,
-// };
+/**
+ * Get the card issuer from a credit card number
+ * @param {string} number string of numbers
+ * @returns card issuer name.
+ */
+const getIssuer = (number) => {
+  // Patterns for each card issuer
+  const issuers = {
+    Visa: /^(?:4[0-9]{12}(?:[0-9]{3})?)$/g,
+    MasterCard: /^5[1-5][0-9]{14}$/g,
+    Amex: /3[47][0-9]{13}$/g,
+  };
+  let issuer = "Unknown issuer";
 
-// const whatCard = () => {
-//   let ccNum = getUserInput();
-//   let cardName = "Unknown card Number";
-
-//   if (luhnCheck() === false) {
-//     cardName = "Invalid input!!!";
-//     return cardName;
-//   }
-//   Object.keys(issuers).forEach((prop) => {
-//     if (issuers[prop].test(ccNum)) {
-//       cardName = prop;
-//     }
-//   });
-//   return cardName;
-// };
+  Object.keys(issuers).forEach((item) => {
+    if (issuers[item].test(number)) {
+      issuer = item;
+    }
+  });
+  return issuer;
+};
