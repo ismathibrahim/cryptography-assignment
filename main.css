@@ -162,3 +162,7 @@ textarea {
 .mb-40 {
   margin-bottom: 40px;
 }
+
+.w-100 {
+  width: 100%;
+}

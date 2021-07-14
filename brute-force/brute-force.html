@@ -39,8 +39,17 @@
         <div class="wrapper">
           <div class="card">
             <h3 class="mb-30">Brute Force Attack</h3>
-            <p class="mb-30">Click button to try all combinations.</p>
-
+            <p class="mb-30">
+              Enter the login url and click button to try all password
+              combinations combinations. The app expects the server to send the
+              response "Correct Password" when password is matched.
+            </p>
+            <label>Login url</label><br />
+            <input
+              type="text"
+              class="bruteForceUrl mb-30 w-100"
+              placeholder="Login url"
+            />
             <button class="mb-30" onclick="bruteForce()">Brute Force</button>
             <p class="bruteForceStartedText"></p>
             <p class="bruteForceStatus"></p>
@@ -52,10 +61,18 @@
             <h3 class="mb-30">Dictionary Attack</h3>
             <p class="mb-30">
               Select dictionary file and click button to try dictionary attack.
-              Dictionary file must be a text file.
+              Dictionary file must be a text file. The app expects the server to
+              send the response "Correct Password" when password is matched.
             </p>
-            <input type="file" id="file" />
+            <label>Login url</label><br />
+            <input
+              type="text"
+              class="dictionaryUrl mb-30 w-100"
+              placeholder="Login url"
+            /><br />
+            <label>Dictionary</label><br />
 
+            <input type="file" id="file" />
             <button class="mb-30" onclick="dictionaryAttack()">
               Dictionary Attack
             </button>

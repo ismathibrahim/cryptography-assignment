@@ -8,6 +8,8 @@ const bruteDurationText = document.querySelector(".bruteDurationText");
 const dictionaryDurationText = document.querySelector(
   ".dictionaryDurationText"
 );
+const bruteForceUrl = document.querySelector(".bruteForceUrl");
+const dictionaryUrl = document.querySelector(".dictionaryUrl");
 
 ///Brute force ---start----------------------------------
 const pattern = "abcdefghijklmnopqrstuvwxyz1234567890";
@@ -30,7 +32,7 @@ const bruteForce = async () => {
     currentItem = gen.next();
 
     bruteForceStatus.textContent = "Current candidate: " + currentItem.value;
-    const response = await postData("http://localhost:3000/login", {
+    const response = await postData(bruteForceUrl.value, {
       password: currentItem.value,
     });
 
@@ -96,7 +98,7 @@ const dictionaryAttack = () => {
     for (let i = 0; i < allLines.length; i++) {
       const line = allLines[i];
       dictionaryStatus.innerHTML = "Current candidate: " + line;
-      const response = await postData("http://localhost:3000/login", {
+      const response = await postData(dictionaryUrl.value, {
         password: line,
       });
 
