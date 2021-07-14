@@ -6,9 +6,6 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
-// Routing
-app.use(express.static(path.join(__dirname, "public")));
-
 app.post("/login", (req, res) => {
   const correctPassword = "bob";
 
@@ -21,4 +18,4 @@ app.post("/login", (req, res) => {
   return res.json("Incorrect Password");
 });
 
-app.listen(3000, console.log(`Server running on port 3000`));
+app.listen(5000, console.log(`Server running on port 5000`));
