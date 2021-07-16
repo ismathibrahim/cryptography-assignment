@@ -7,7 +7,7 @@
     <title>Stream Cipher</title>
 
     <link href="../main.css" rel="stylesheet" />
-    <link href="./stream-cipher.css" rel="stylesheet" />
+    <link href="./steganography.css" rel="stylesheet" />
   </head>
   <body>
     <header><h1>Cryptography Toolkit</h1></header>
@@ -29,8 +29,8 @@
             Brute Force
           </a>
 
-          <a class="nav-link active" href="stream-cipher.html">
-            Stream Cipher
+          <a class="nav-link active" href="steganography.html">
+            Steganography
           </a>
         </div>
       </nav>
@@ -42,13 +42,17 @@
           <div class="card">
             <h3 class="mb-20">Encoder</h3>
             <p class="mb-20">
-              Enter the message and key, and click button to encode
+              Enter the secret message, password, and a cover text, and click
+              button to encode.
             </p>
-            <p>Message</p>
-            <textarea class="encodeMessage1" rows="5"></textarea>
-            <p>Key</p>
 
-            <textarea class="encodeMessage2" rows="5"></textarea>
+            <p>Secret message</p>
+            <textarea class="encodeMessage1" rows="3"></textarea>
+            <p>Password</p>
+            <textarea class="encodePassword" rows="1"></textarea>
+
+            <p>Cover message</p>
+            <textarea class="encodeMessage2" rows="3"></textarea>
             <button onclick="encode()" class="encodeButton mb-30">
               Encode
             </button>
@@ -59,13 +63,13 @@
           <div class="card">
             <h3 class="mb-20">Decoder</h3>
             <p class="mb-20">
-              Enter the encoded message and key, and click button to decode
+              Enter the encoded message and password, and click button to decode
             </p>
             <p>Encoded message</p>
 
             <textarea class="decodeMessage1" rows="5"></textarea>
-            <p>Key</p>
-            <textarea class="decodeMessage2" rows="5"></textarea>
+            <p>Password</p>
+            <textarea class="decodePassword" rows="1"></textarea>
 
             <button onclick="decode()" class="decodeButton mb-30">
               Decode
@@ -76,7 +80,9 @@
         </div>
       </main>
     </div>
-    <script src="./stream-cipher.js"></script>
+    <script src="./rc4.js"></script>
+    <script src="./hide-unhide.js"></script>
+    <script src="./steganography.js"></script>
 
     <footer>Copyright &copy; 2021 Ismath Ibrahim</footer>
   </body>
