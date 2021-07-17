@@ -1,7 +1,0 @@
-.wrapper {
-  width: 950px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  height: 500px;
-}

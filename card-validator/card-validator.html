@@ -7,7 +7,6 @@
     <title>Credit Card Validation</title>
 
     <link href="../main.css" rel="stylesheet" />
-    <link href="./card-validator.css" rel="stylesheet" />
   </head>
   <body>
     <header><h1>Cryptography Toolkit</h1></header>
@@ -15,10 +14,10 @@
       <nav class="sidebar">
         <div class="nav-links">
           <img src="../logo.png" alt="Logo" class="logo" />
-          <a class="nav-link" href="../index.html"> Dashboard </a>
+          <a class="nav-link" href="../index.html"> Home </a>
 
           <a class="nav-link active" href="card-validator.html">
-            Credit Card Validation
+            Credit Card Validator
           </a>
 
           <a class="nav-link" href="../hamming-code/hamming-code.html">
@@ -38,7 +37,7 @@
       <main>
         <h2>Credit Card Validator</h2>
 
-        <div class="card">
+        <div class="card h-400">
           <form onsubmit="event.preventDefault(); validate();">
             <p class="mb-40">
               Enter a 16-digit credit card number to check validity
@@ -51,7 +50,7 @@
             />
             <button type="submit" id="submit">Check</button>
           </form>
-          <p class="errorText"></p>
+          <p class="errorText mb-40"></p>
           <p class="validityText"></p>
           <p class="issuerText"></p>
         </div>
