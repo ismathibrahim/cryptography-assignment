@@ -36,7 +36,7 @@
       </nav>
 
       <main>
-        <h2>Steganographic Stream Cipher</h2>
+        <h2>Steganography</h2>
 
         <div class="wrapper">
           <div class="card">
@@ -46,16 +46,16 @@
               button to encode.
             </p>
 
-            <p>Secret message</p>
-            <textarea class="encodeMessage1" rows="3"></textarea>
-            <p>Password</p>
-            <textarea class="encodePassword" rows="1"></textarea>
+            <form onsubmit="event.preventDefault(); encode();">
+              <p>Secret message</p>
+              <textarea class="encodeMessage1" rows="3" required></textarea>
+              <p>Password</p>
+              <textarea class="encodePassword" rows="1" required></textarea>
 
-            <p>Cover message</p>
-            <textarea class="encodeMessage2" rows="3"></textarea>
-            <button onclick="encode()" class="encodeButton mb-30">
-              Encode
-            </button>
+              <p>Cover message</p>
+              <textarea class="encodeMessage2" rows="3" required></textarea>
+              <button class="encodeButton mb-30">Encode</button>
+            </form>
             <p>Encoded message</p>
             <textarea class="encodeResult" rows="5"></textarea>
           </div>
@@ -65,15 +65,15 @@
             <p class="mb-20">
               Enter the encoded message and password, and click button to decode
             </p>
-            <p>Encoded message</p>
 
-            <textarea class="decodeMessage1" rows="5"></textarea>
-            <p>Password</p>
-            <textarea class="decodePassword" rows="1"></textarea>
+            <form onsubmit="event.preventDefault(); decode();">
+              <p>Encoded message</p>
+              <textarea class="decodeMessage1" rows="5" required></textarea>
+              <p>Password</p>
+              <textarea class="decodePassword" rows="1" required></textarea>
 
-            <button onclick="decode()" class="decodeButton mb-30">
-              Decode
-            </button>
+              <button class="decodeButton mb-30">Decode</button>
+            </form>
             <p>Decoded message</p>
             <textarea class="decodeResult" id="" rows="5"></textarea>
           </div>
