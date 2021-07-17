@@ -1,5 +1,6 @@
 :root {
   --color-primary: #26ffdf;
+  --color-error: rgb(255, 78, 160);
   --bg-color: #030514;
 
   --font-heading: "Space Grotesk";

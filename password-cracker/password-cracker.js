@@ -10,6 +10,8 @@ const dictionaryDurationText = document.querySelector(
 );
 const bruteForceUrl = document.querySelector(".bruteForceUrl");
 const dictionaryUrl = document.querySelector(".dictionaryUrl");
+const bruteForceUrlError = document.querySelector(".bruteForceUrlError");
+const dictionaryUrlError = document.querySelector(".dictionaryUrlError");
 
 ///////////////////////////////////////////////////////////////////////////
 // BRUTE FORCE ATTACK
@@ -21,16 +23,23 @@ const pattern = "abcdefghijklmnopqrstuvwxyz1234567890";
 const charArray = pattern.split("");
 
 const bruteForce = async () => {
+  bruteForceUrlError.textContent = "";
+
+  // If no url is provided show error
+  if (!bruteForceUrl.value) {
+    bruteForceUrlError.textContent = "Please provide a url";
+    return;
+  }
+
   const startTime = new Date();
-  const gen = generateCharacters(charArray, 6);
-
-  let found = false;
-  let currentItem;
-
   bruteForceStartedText.textContent = "Brute force attack started...";
   bruteForceStatus.textContent = "";
   bruteForceFoundText.textContent = "";
   bruteDurationText.textContent = "";
+
+  const gen = generateCharacters(charArray, 6);
+  let found = false;
+  let currentItem;
 
   while (!found) {
     // Get the candidate string generated in the current iteration
@@ -114,6 +123,14 @@ document.getElementById("file").onchange = function () {
 
 const dictionaryAttack = () => {
   const reader = new FileReader();
+
+  dictionaryUrlError.textContent = "";
+
+  // If no url is provided show error
+  if (!dictionaryUrl.value) {
+    dictionaryUrlError.textContent = "Please provide a url";
+    return;
+  }
 
   const startTime = new Date();
   dictionaryStartedText.textContent = "Dictionary attack started...";
