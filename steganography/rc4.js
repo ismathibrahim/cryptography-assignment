@@ -1,32 +1,42 @@
 /**
  *  RC4 cipher for encryption and decryption
+ *  Referenced from Gupta, S.S., Maitra, S., Paul, G. and Sarkar, S. (2014)
+ *  (Non-)random Sequences From (Non-)random Permutations—analysis of Rc4 Stream
+ *  Cipher. Journal of Cryptology. 27 (1), pp. 67-108.
  * @param {string} key
  * @param {string} str
  * @returns string of cipher text when encrypting, plain text when decrypting
  */
 const rc4 = (key, str) => {
-  var s = [],
-    j = 0,
-    x,
-    res = "";
-  for (var i = 0; i < 256; i++) {
+  const s = []; // Internal state
+  let result = "";
+
+  for (let i = 0; i < 256; i++) {
     s[i] = i;
   }
-  for (i = 0; i < 256; i++) {
-    j = (j + s[i] + key.charCodeAt(i % key.length)) % 256;
-    x = s[i];
+
+  // Key scheduling algorithm
+  for (let i = 0, j = 0; i < 256; i++) {
+    j = j + s[i] + key.charCodeAt(i % key.length);
+
+    //Swap
+    const temp = s[i];
     s[i] = s[j];
-    s[j] = x;
+    s[j] = temp;
   }
-  i = 0;
-  j = 0;
-  for (var y = 0; y < str.length; y++) {
-    i = (i + 1) % 256;
-    j = (j + s[i]) % 256;
-    x = s[i];
+
+  //Pseudo random generation algorithm
+  for (let y = 0, i = 0, j = 0; y < str.length; y++) {
+    i = i + 1;
+    j = j + s[i];
+
+    //Swap
+    const temp = s[i];
     s[i] = s[j];
-    s[j] = x;
-    res += String.fromCharCode(str.charCodeAt(y) ^ s[(s[i] + s[j]) % 256]);
+    s[j] = temp;
+
+    result += String.fromCharCode(str.charCodeAt(y) ^ s[s[i] + s[j]]);
   }
-  return res;
+
+  return result;
 };
